@@ -16,7 +16,7 @@ public class FootballGame {
     @GenericGenerator(name = "system-uuid", strategy = "uuid2")
     public String id;
     public String date;
-    public Integer rating;
+    public Integer rating = 3;
     public String homeTeam;
     public String score;
     public String visitorTeam;
