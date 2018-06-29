@@ -1,0 +1,92 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Football Games Tracker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/main.css}" href="../static/main.css">
+</head>
+
+<body class="bg-light">
+
+<header>
+    <!--<div class="navbar navbar-dark bg-dark box-shadow">-->
+
+    <div class="navbar navbar-default navbar-dark navbar-custom">
+        <div class="container d-flex justify-content-between">
+            <a th:href="${'/'}" class="navbar-brand d-flex align-items-center">
+                <i class="fas fa-futbol"></i>
+                &nbsp;
+                <strong>Football Games Tracker</strong>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <!--<div class="row">-->
+            <form th:object="${game}" th:action="@{/games/upsert}" method="post">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="date">Date</label>
+                        <input type="text" class="form-control" id="date"
+                               placeholder="yyyy-MM-dd" th:field="*{date}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="rating">Rate</label>
+                        <select class="form-control" id="rating" th:field="*{rating}">
+                            <option th:value="1">1</option>
+                            <option th:value="2">2</option>
+                            <option th:value="3">3</option>
+                            <option th:value="4">4</option>
+                            <option th:value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <label for="home-team">Home Team</label>
+                        <input type="text" class="form-control" id="home-team"
+                               placeholder="Home Team" th:field="*{homeTeam}">
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="score">Score</label>
+                        <input type="text" class="form-control" id="score"
+                               placeholder="5-2" th:field="*{score}">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label for="visitor-team">Visitor Team</label>
+                        <input type="text" class="form-control" id="visitor-team"
+                               placeholder="Visitor Team" th:field="*{visitorTeam}">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="comment">Comment</label>
+                        <textarea class="form-control" id="comment" rows="5" th:field="*{comment}"></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="btn mb-2">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

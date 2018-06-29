@@ -1,0 +1,12 @@
+body {
+    height: 100%;
+}
+
+.navbar {
+    background-color: #e74c3c;
+}
+
+.navbar-custom {
+    color: #FFFFFF;
+    background-color: #005800;
+}

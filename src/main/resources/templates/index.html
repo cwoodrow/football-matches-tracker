@@ -1,0 +1,105 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Football Games Tracker</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css"
+          integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/main.css}" href="../static/main.css">
+</head>
+
+<body class="bg-light">
+
+<header>
+    <!--<div class="navbar navbar-dark bg-dark box-shadow">-->
+
+    <div class="navbar navbar-default navbar-dark navbar-custom">
+        <div class="container d-flex justify-content-between">
+            <a th:href="${'/'}" class="navbar-brand d-flex align-items-center">
+                <i class="fas fa-futbol"></i>
+                &nbsp;
+                <strong>Football Games Tracker</strong>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main role="main">
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Home Team</th>
+                        <th scope="col">Score</th>
+                        <th scope="col">Visitor Team</th>
+                        <th scope="col">Rating</th>
+                        <th scope="col"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>2018-06-18</td>
+                        <td>Tunisia</td>
+                        <td>1-2</td>
+                        <td>England</td>
+                        <td>5</td>
+                        <td>
+                            <a class="btn btn-light btn-sm" th:href="${'/games/edit/' + '1'}" role="button">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2018-06-24</td>
+                        <td>England</td>
+                        <td>6-1</td>
+                        <td>Panama</td>
+                        <td>5</td>
+                        <td>
+                            <a class="btn btn-light btn-sm" th:href="${'/games/edit/' + '2'}" role="button">Edit</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2018-06-28</td>
+                        <td>England</td>
+                        <td>4-1</td>
+                        <td>Belgium</td>
+                        <td>5</td>
+                        <td>
+                            <a class="btn btn-light btn-sm" th:href="${'/games/edit/' + '3'}" role="button">Edit</a>
+                        </td>
+                    </tr>
+                    <tr th:each="game : ${games}">
+                        <td th:text="${game.date}">Date</td>
+                        <td th:text="${game.homeTeam}">Home Team</td>
+                        <td th:text="${game.score}">Score</td>
+                        <td th:text="${game.visitorTeam}">Visitor Team</td>
+                        <td th:text="${game.rating}">Rating</td>
+                        <td><a th:href="${'/games/edit/' + game.id}" class="btn btn-light btn-sm">Edit</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="row">
+                <a class="btn btn-secondary" th:href="${'/games/add'}" role="button">Rate New Game</a>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>
